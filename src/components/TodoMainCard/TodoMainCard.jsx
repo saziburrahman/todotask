@@ -38,37 +38,38 @@ const TodoMainCard = () => {
     <div className="TodoMainCard card">
       <h1 className="card-text text-center pd-4">Todo App</h1>
       <div className="card-body">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Write Todo"
-            aria-label="write todo"
-            aria-describedby="button-addon2"
-            onChange={handleChange}
-            name="todoTitle"
-            value={todo.todoTitle}
-            required
-          />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Write Description"
-            aria-label="write description"
-            aria-describedby="button-addon2"
-            onChange={handleChange}
-            value={todo.desc}
-            name="desc"
-          />
-          <button
-            className="btn btn-primary"
-            type="button"
-            id="button-addon2"
-            onClick={handleSubmit}
-          >
-            Add Todo
-          </button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Write Todo"
+              aria-label="write todo"
+              aria-describedby="button-addon2"
+              onChange={handleChange}
+              name="todoTitle"
+              value={todo.todoTitle}
+              required
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Write Description"
+              aria-label="write description"
+              aria-describedby="button-addon2"
+              onChange={handleChange}
+              value={todo.desc}
+              name="desc"
+            />
+            <button
+              className="btn btn-primary"
+              type="submit"
+              id="button-addon2"
+            >
+              Add Todo
+            </button>
+          </div>
+        </form>
         {todosList.items &&
           todosList.items.map((todoItem) => (
             <TodoListCard todo={todoItem} key={todoItem.id} />

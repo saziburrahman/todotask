@@ -1,7 +1,35 @@
+import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { updateTodo } from "../../features/todoSlice";
 import "./TodoEditModal.css";
 
-const TodoEditModal = ({ todoId }) => {
+const TodoEditModal = ({ todo }) => {
+  const [updateTodoData, setUpdateTodoData] = useState({
+    name: todo.name,
+    desc: todo.desc,
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setUpdateTodoData({
+      ...updateTodoData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateTodo({
+        id: todo.id,
+        name: updateTodoData.name,
+        desc: updateTodoData.desc,
+      })
+    );
+  };
+
   return (
     <>
       <CiEdit
@@ -23,7 +51,7 @@ const TodoEditModal = ({ todoId }) => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">
-                Update Todo {todoId}
+                Update Todo
               </h5>
               <button
                 type="button"
@@ -33,32 +61,46 @@ const TodoEditModal = ({ todoId }) => {
               ></button>
             </div>
             <div className="modal-body">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Edit Todo"
-                aria-label="edit todo"
-                aria-describedby="button-addon2"
-              />
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Edit Description"
-                aria-label="edit description"
-                aria-describedby="button-addon2"
-              />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Update
-              </button>
+              <form onSubmit={handleUpdate}>
+                <div className="input-group mb-4">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Edit Todo"
+                    aria-label="edit todo"
+                    aria-describedby="button-addon2"
+                    name="name"
+                    value={updateTodoData.name}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Edit Description"
+                    aria-label="edit description"
+                    aria-describedby="button-addon2"
+                    name="desc"
+                    value={updateTodoData.desc}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="modalButton">
+                  <button
+                    type="button"
+                    className="btn btn-secondary me-2"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    data-bs-dismiss="modal"
+                  >
+                    Update
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
