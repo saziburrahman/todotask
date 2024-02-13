@@ -28,8 +28,10 @@ const TodoMainCard = () => {
       id: uuidv4(),
       name: todo.todoTitle,
       desc: todo.desc,
+      status: false,
     };
     dispatch(addTodo(todoDetails));
+    setTodo({ todoTitle: "", desc: "" });
     console.log(todoDetails);
   };
   return (
@@ -45,6 +47,7 @@ const TodoMainCard = () => {
             aria-describedby="button-addon2"
             onChange={handleChange}
             name="todoTitle"
+            value={todo.todoTitle}
             required
           />
           <input
@@ -54,6 +57,7 @@ const TodoMainCard = () => {
             aria-label="write description"
             aria-describedby="button-addon2"
             onChange={handleChange}
+            value={todo.desc}
             name="desc"
           />
           <button
@@ -67,16 +71,8 @@ const TodoMainCard = () => {
         </div>
         {todosList.items &&
           todosList.items.map((todoItem) => (
-            <TodoListCard todo={todoItem}/>
+            <TodoListCard todo={todoItem} key={todoItem.id} />
           ))}
-        {/* <TodoListCard />
-        <TodoListCard />
-        <TodoListCard />
-        <TodoListCard />
-        <TodoListCard />
-        <TodoListCard />
-        <TodoListCard />
-        <TodoListCard /> */}
       </div>
     </div>
   );
