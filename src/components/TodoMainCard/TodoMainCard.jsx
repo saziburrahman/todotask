@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import TodoListCard from "../TodoListCard/TodoListCard";
+import { useState } from "react";
 import "./TodoMainCard.css";
 import { v4 as uuidv4 } from "uuid";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../../features/todoSlice.js";
+import NavigationTab from "../NavigationTab/NavigationTab";
 
 const TodoMainCard = () => {
   const [todo, setTodo] = useState({ todoTitle: "", desc: "" });
   const dispatch = useDispatch();
-  const todosList = useSelector((state) => state.todos);
-  useEffect(() => {
-    console.log(todosList.items);
-  }, [todosList]);
+  // const todosList = useSelector((state) => state.todos);
+  // useEffect(() => {
+  //   console.log(todosList.items);
+  // }, [todosList]);
   const handleChange = (e) => {
     setTodo({
       ...todo,
@@ -51,8 +51,7 @@ const TodoMainCard = () => {
               value={todo.todoTitle}
               required
             />
-            <input
-              type="text"
+            <textarea
               className="form-control"
               placeholder="Write Description"
               aria-label="write description"
@@ -60,7 +59,7 @@ const TodoMainCard = () => {
               onChange={handleChange}
               value={todo.desc}
               name="desc"
-            />
+            ></textarea>
             <button
               className="btn btn-primary"
               type="submit"
@@ -70,10 +69,11 @@ const TodoMainCard = () => {
             </button>
           </div>
         </form>
-        {todosList.items &&
+        <NavigationTab />
+        {/* {todosList.items &&
           todosList.items.map((todoItem) => (
             <TodoListCard todo={todoItem} key={todoItem.id} />
-          ))}
+          ))} */}
       </div>
     </div>
   );

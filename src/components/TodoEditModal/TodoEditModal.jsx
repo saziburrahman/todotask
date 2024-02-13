@@ -73,8 +73,7 @@ const TodoEditModal = ({ todo }) => {
                     value={updateTodoData.name}
                     onChange={handleChange}
                   />
-                  <input
-                    type="text"
+                  <textarea
                     className="form-control"
                     placeholder="Edit Description"
                     aria-label="edit description"
@@ -82,7 +81,7 @@ const TodoEditModal = ({ todo }) => {
                     name="desc"
                     value={updateTodoData.desc}
                     onChange={handleChange}
-                  />
+                  ></textarea>
                 </div>
                 <div className="modalButton">
                   <button
