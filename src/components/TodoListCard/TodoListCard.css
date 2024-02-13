@@ -1,6 +1,14 @@
 .icons {
   float: right;
 }
+.icon {
+  margin: 5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.icon:hover{
+  transform: scale(1.2);
+}
 .TodoListCard:hover {
   transition: 0.3s;
   box-shadow: 0 0 20px #adadad;

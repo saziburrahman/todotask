@@ -1,4 +1,7 @@
 import "./TodoListCard.css";
+import { ImCheckmark } from "react-icons/im";
+import { IoTrashOutline } from "react-icons/io5";
+import TodoEditModal from "../TodoEditModal/TodoEditModal";
 
 const TodoListCard = () => {
   return (
@@ -12,8 +15,9 @@ const TodoListCard = () => {
           </div>
           <div className="col">
             <div className="icons">
-              <span>icon</span>
-              <span>icon</span>
+              <ImCheckmark className="icon" />
+              <TodoEditModal />
+              <IoTrashOutline className="icon" />
             </div>
           </div>
         </div>
