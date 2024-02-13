@@ -17,10 +17,18 @@ const todoSlice = createSlice({
     },
     updateTodo: (state, action) => {
       const { id, name, desc } = action.payload;
-      const todoToUpdate = state.items.find((todo) => todo.id === id);
-      if (todoToUpdate) {
-        todoToUpdate.name = name;
-        todoToUpdate.desc = desc;
+      const todoUpdate = state.items.find((todo) => todo.id === id);
+      if (todoUpdate) {
+        todoUpdate.name = name;
+        todoUpdate.desc = desc;
+        saveStateToLocalStorage(state);
+      }
+    },
+    updateTodoStatus: (state, action) => {
+      const { id } = action.payload;
+      const todoUpdate = state.items.find((todo) => todo.id === id);
+      if (todoUpdate) {
+        todoUpdate.status = !todoUpdate.status;
         saveStateToLocalStorage(state);
       }
     },
@@ -32,6 +40,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, updateTodo, deleteTodo } = todoSlice.actions;
+export const { addTodo, updateTodo, deleteTodo,updateTodoStatus } = todoSlice.actions;
 
 export default todoSlice.reducer;
