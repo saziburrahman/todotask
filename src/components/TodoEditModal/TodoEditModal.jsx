@@ -1,7 +1,7 @@
 import { CiEdit } from "react-icons/ci";
 import "./TodoEditModal.css";
 
-const TodoEditModal = () => {
+const TodoEditModal = ({ todoId }) => {
   return (
     <>
       <CiEdit
@@ -11,52 +11,52 @@ const TodoEditModal = () => {
       />
 
       <div
-        class="modal fade"
+        className="modal fade"
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Update Todo
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">
+                Update Todo {todoId}
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Edit Todo"
                 aria-label="edit todo"
                 aria-describedby="button-addon2"
               />
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Edit Description"
                 aria-label="edit description"
                 aria-describedby="button-addon2"
               />
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 Update
               </button>
             </div>

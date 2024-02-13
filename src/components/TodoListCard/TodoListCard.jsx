@@ -3,20 +3,20 @@ import { ImCheckmark } from "react-icons/im";
 import { IoTrashOutline } from "react-icons/io5";
 import TodoEditModal from "../TodoEditModal/TodoEditModal";
 
-const TodoListCard = () => {
+const TodoListCard = ({ todo }) => {
   return (
     <div className="card mb-2 TodoListCard">
       <div className="card-body">
         <div className="row">
           <div className="col">
-            <span>Todo message</span>
+            <span>{todo.name}</span>
             <br />
-            <span>Todo Description</span>
+            <span>{todo.desc}</span>
           </div>
           <div className="col">
             <div className="icons">
               <ImCheckmark className="icon" />
-              <TodoEditModal />
+              <TodoEditModal todoId={todo.id} />
               <IoTrashOutline className="icon" />
             </div>
           </div>
